@@ -5,4 +5,17 @@ c) I configured the project URL routing by defining a new element in url_pattern
 d) I created a model for the main application by modifying model.py in the main application folder and defining a model class named Item that inherits models. The model has a name, amount, and description field with the appropriate data type. This model will function as a data/information holder structure behind the application that links to the database
 e) In my views.py, I created a handler function, show_main, which will be called whenever there is an access request for the main app url. the function will build up the context, which might contain database retrieval in the future, and the context will be passed as one of the parameters along with the main.html that is contained in the templates folder. the context is in a form of dictionary and the key will be matched with the html file and thus the value will replace some text in html file. 
 f) I created a routing in urls.py in main application folder and configured it so that whenever it is accessed, the show_main method is called.
-g) Last, I deployed the project to the internet by connecting my cloud repository in Github to Adaptable.io
+g) Last, I deployed the project to the internet by connecting my cloud repository in Github to Adaptable.io\
+
+2. The purpose of virtual environment isolating Django project:
+so that the project will be isolated such that the dependency and libraries installed is limited to only the project scope, without affecting the Python global environment. 
+
+It is not a requirement for Django project to create a virtual environment, but it is a good practice. Without virtual environment, all the dependencies along with their configurations would affect one's PC global environment, which might leads to messiness, memory issue, or configuration conflicts.
+
+3. Difference between MVC, MVT, and MVVM design pattern:
+
+MVC stands for Model-View-Controller. Model represents the business and application logic. View represents the visual or appearance of the application. Model and View is referenced in Controller, a component that manages Model and View altogether. Controller acts as a mediator. Controller part has reference to both View and Model. The interaction of Controller with Model and View is directly created by the programmer, making it clearly defined and easy to be understood.
+
+MVT stands for Model-View-Template. It is commonly used in Django framework. Model, just like in MVC, represents the business and application logic. Template acts as a visual design of the application, usually in forms of HTML and CSS code. However, it is the View component that acts as a mediator between Model and Template. View component is the one that receives the HTTP request, retreive data from model and database, and render the template using the retreived data. The interaction between View, Model, and Template, is usually managed by framework, thus making it harder to understand the low level detail behind the abstractions. 
+
+MVVM stands for Model-View-ViewModel. Model represents the business and application logic. View is a "dumb puppet" class that is solely used for displaying the view only, created with little to no logic within it. The View displays the data from ViewModel through data binding. Thus, ViewModel only interacts with Model, vica versa. Whenever there is an event detection in the View, through data binding, the ViewModel is notified and interacts the Model to take necessary actions, thus giving the ViewModel feedback and the change is reflected back to View through data binding. Unlike MVC, in MVVM, View has reference to ViewModel, while View in MVC doesn't have reference to Controller.
